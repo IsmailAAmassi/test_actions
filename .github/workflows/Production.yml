@@ -9,6 +9,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    types: [ closed ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,6 +18,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    if: github.event.pull_request.merged == true
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -27,7 +29,8 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: |
+          echo PR #${{ github.event.number }} has been merged
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
