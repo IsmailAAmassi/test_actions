@@ -31,7 +31,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo PR #${{ github.event.number }} has been merged,
-           echo Workspace path : ${{ $GITHUB_WORKSPACE }} ,
+           echo Workspace path : $GITHUB_WORKSPACE ,
             echo PR event #${{ github.event.number }} info :  ${{ github.event}}
 
       # Runs a set of commands using the runners shell
